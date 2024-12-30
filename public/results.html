@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Mystical Destiny Revealed</title>
+    <link rel="stylesheet" href="/mystic-destiny-reader/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container results-container">
+        <div class="language-switch">
+            <button onclick="toggleLanguage()" class="lang-button">
+                <i class="fas fa-language"></i>
+                <span id="langText">हिंदी में देखें</span>
+            </button>
+        </div>
+        <h1><i class="fas fa-stars magical-icon"></i>Your Destiny Revealed</h1>
+        <div class="user-info">
+            <h2 id="userName"></h2>
+            <p id="readingDate"></p>
+        </div>
+        <div id="results">
+            <div class="prediction-section">
+                <h2><i class="fas fa-dice magical-icon"></i>Lucky Numbers</h2>
+                <div class="lucky-numbers" id="luckyNumbers"></div>
+            </div>
+            
+            <div class="prediction-section">
+                <h2><i class="fas fa-user-circle magical-icon"></i>Your Personality</h2>
+                <ul class="prediction-list" id="personality"></ul>
+            </div>
+
+            <div class="prediction-section">
+                <h2><i class="fas fa-heart magical-icon"></i>Marriage Prediction</h2>
+                <div class="prediction-list">
+                    <li id="marriage"></li>
+                </div>
+            </div>
+
+            <div class="prediction-section">
+                <h2><i class="fas fa-users magical-icon"></i>Your Life Partner</h2>
+                <ul class="prediction-list" id="partnerTraits"></ul>
+            </div>
+
+            <div class="prediction-section">
+                <h2><i class="fas fa-palette magical-icon"></i>Your Favorite Colors</h2>
+                <div class="prediction-list">
+                    <li>Primary Color: <span class="color-text" id="primaryColor"></span></li>
+                    <li>Secondary Color: <span class="color-text" id="secondaryColor"></span></li>
+                    <li>Accent Color: <span class="color-text" id="accentColor"></span></li>
+                </div>
+            </div>
+
+            <div class="prediction-section">
+                <h2><i class="fas fa-briefcase magical-icon"></i>Your Career Path</h2>
+                <div class="career-fields" id="careerFields"></div>
+                <ul class="prediction-list" id="careerTraits"></ul>
+            </div>
+        </div>
+        <div class="button-group">
+            <button onclick="saveResults()" class="save-button">
+                <i class="fas fa-download magical-icon"></i>Save Your Reading
+            </button>
+        </div>
+        <div class="donation-banner">
+            <div class="donation-content">
+                <i class="fas fa-gem magical-icon"></i>
+                <h3>Unlock Enhanced Predictions!</h3>
+                <p>Support our mystical journey with just ₹20 and receive:</p>
+                <ul>
+                    <li>More detailed personality insights</li>
+                    <li>Extended career guidance</li>
+                    <li>Monthly personalized predictions</li>
+                    <li>Priority access to new features</li>
+                </ul>
+                <div class="donation-benefits">
+                    <p class="benefit-text">Your contribution helps us maintain and enhance our spiritual algorithms for more accurate readings!</p>
+                </div>
+                <div class="donation-social">
+                    <p>For personalized one-on-one readings:</p>
+                    <button onclick="connectInstagram()" class="instagram-button">
+                        <i class="fab fa-instagram"></i>Connect on Instagram
+                    </button>
+                    <span class="social-note">DM for private consultations ✨</span>
+                </div>
+            </div>
+        </div>
+        <div class="share-container">
+            <p>Share your mystical experience:</p>
+            <div class="social-buttons">
+                <button onclick="shareOnFacebook()" class="share-button facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button onclick="shareOnTwitter()" class="share-button twitter">
+                    <i class="fab fa-twitter"></i>
+                </button>
+                <button onclick="shareOnWhatsapp()" class="share-button whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+                <button onclick="copyLink()" class="share-button copy-link">
+                    <i class="fas fa-link"></i>
+                </button>
+            </div>
+        </div>
+        <div class="feedback-section">
+            <div class="feedback-options">
+                <h3><i class="fas fa-comment-dots magical-icon"></i>How was your reading?</h3>
+                <div class="rating-buttons">
+                    <button onclick="submitFeedback('excellent')" class="rating-btn">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>Excellent</span>
+                    </button>
+                    <button onclick="submitFeedback('good')" class="rating-btn">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>Good</span>
+                    </button>
+                    <button onclick="submitFeedback('fair')" class="rating-btn">
+                        <i class="fas fa-star"></i>
+                        <span>Fair</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="more-info-section">
+                <h3><i class="fas fa-question-circle magical-icon"></i>Need More Information?</h3>
+                <form id="moreInfoForm" onsubmit="requestMoreInfo(event)">
+                    <select id="topicSelect" required>
+                        <option value="">Select a topic</option>
+                        <option value="personality">Personality Details</option>
+                        <option value="career">Career Path</option>
+                        <option value="relationship">Relationship & Marriage</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <textarea id="questionText" placeholder="Your specific question..." required></textarea>
+                    <button type="submit" class="submit-question-btn">
+                        <i class="fas fa-paper-plane magical-icon"></i>Submit Question
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/mystic-destiny-reader/script.js"></script>
+</body>
+</html> 
