@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystic Destiny Reader</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .loading-content {
+            text-align: center;
+            color: #ffd700;
+        }
+        
+        .crystal-ball {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: glow 2s infinite;
+        }
+        
+        .loading-text {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: white;
+        }
+        
+        .loading-dots {
+            display: inline-block;
+        }
+        
+        .loading-dots:after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #ffd700; }
+            50% { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffa500; }
+            100% { text-shadow: 0 0 10px #ffd700; }
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60% { content: '...'; }
+            80%, 100% { content: ''; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay">
+        <div class="loading-content">
+            <i class="fas fa-crystal-ball crystal-ball"></i>
+            <div class="loading-text">
+                Reading the mystical energies
+                <span class="loading-dots"></span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="language-switch">
+            <button onclick="toggleLanguage()" class="lang-button">
+                <i class="fas fa-language"></i>
+                <span id="langText">हिंदी में देखें</span>
+            </button>
+        </div>
+        <h1><i class="fas fa-moon magical-icon"></i>Mystic Destiny Reader</h1>
+        <div class="share-container">
+            <p>Share this mystical experience:</p>
+            <div class="social-buttons">
+                <button onclick="shareOnFacebook()" class="share-button facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button onclick="shareOnTwitter()" class="share-button twitter">
+                    <i class="fab fa-twitter"></i>
+                </button>
+                <button onclick="shareOnWhatsapp()" class="share-button whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+                <button onclick="copyLink()" class="share-button copy-link">
+                    <i class="fas fa-link"></i>
+                </button>
+            </div>
+        </div>
+        <div class="form-container">
+            <form id="predictionForm" onsubmit="generatePrediction(event)">
+                <div class="input-group">
+                    <label for="name"><i class="fas fa-user magical-icon"></i>Your Full Name</label>
+                    <input type="text" id="name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="input-group">
+                    <label for="dob"><i class="fas fa-calendar magical-icon"></i>Date of Birth</label>
+                    <input type="date" id="dob" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="photo"><i class="fas fa-image magical-icon"></i>First Page Of Janam Kundali</label>
+                    <input type="file" id="photo" accept="image/*" required>
+                </div>
+
+                <button type="submit"><i class="fas fa-crystal-ball magical-icon"></i>Reveal Your Destiny</button>
+            </form>
+        </div>
+    </div>
+    <script src="/mystic-destiny-reader/script.js"></script>
+</body>
+</html> 
